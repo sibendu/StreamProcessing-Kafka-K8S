@@ -1,0 +1,20 @@
+# To create a new connector
+curl -X POST http://localhost:8083/connectors -H "Content-Type: application/json" -d '{
+        "name": "jdbc-source-mysql-another",
+        "config": {
+                "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
+                "connection.url": "jdbc:mysql://localhost:3306/kafka",
+                "connection.user": "root",
+                "connection.password": "password",
+                "topic.prefix": "jdbc-mysql-",
+                "mode":"bulk",
+                "catalog.pattern" : "kafka",
+                "table.whitelist" : "customers"
+                }
+        }'
+
+# Check it
+curl http://129.213.158.157:8083/connectors/jdbc-source-mysql-another
+
+# Remove the connector
+curl -X DELETE http://localhost:8083/connectors -H "Content-Type: application/json" -d '{ "name": "jdbc-source-mysql-another" }'
