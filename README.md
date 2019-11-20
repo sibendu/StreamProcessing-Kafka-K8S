@@ -1,3 +1,5 @@
+Documentation to be updated - since project structure updated
+
 # Kafka Streams Demo
 
 This is a sample project with Kafka stream processors deployed on K8S. Kafka server is outside K8S
